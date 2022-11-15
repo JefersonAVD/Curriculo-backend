@@ -37,13 +37,13 @@ Route::prefix('/login')->controller(LoginController::class)->group(function (){
     Route::get('/visitante','guest')->name('login.guest');
     Route::get('/sair','exit')->name('login.exit');
 });
-Route::prefix('/')->middleware(CrudBlock::class)->group(function(){
     
-    Route::get('/', function(){
-        if(Auth::check())return redirect()->back();
-        return redirect()->route('login.index');
-    });
-    
+Route::get('/', function(){
+    if(Auth::check())return redirect()->back();
+    return redirect()->route('login.index');
+});
+
+Route::middleware(CrudBlock::class)->group( function (){
     Route::prefix('/perfil')->controller(PerfilController::class)->group(function(){
         Route::get('/','index')->name('perfil.index');
         Route::get('/{perfil}','edit')->name('perfil.edit');
@@ -100,3 +100,5 @@ Route::prefix('/')->middleware(CrudBlock::class)->group(function(){
         Route::delete('/{atividade}/delete','destroy')->name('atividades.destroy');
     });
 });
+
+
