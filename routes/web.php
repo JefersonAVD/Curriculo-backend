@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Middleware\CrudBlock;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
@@ -38,7 +37,7 @@ Route::prefix('/login')->controller(LoginController::class)->group(function (){
     Route::get('/visitante','guest')->name('login.guest');
     Route::get('/sair','exit')->name('login.exit');
 });
-Route::prefix('/')->middleware(CrudBlock::class)->group(function(){
+Route::prefix('/')->group(function(){
     
     Route::get('/', function(){
         if(Auth::check())return redirect()->back();
