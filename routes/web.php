@@ -37,7 +37,7 @@ Route::prefix('/login')->controller(LoginController::class)->group(function (){
     Route::get('/visitante','guest')->name('login.guest');
     Route::get('/sair','exit')->name('login.exit');
 });
-Route::prefix('/')->group(function(){
+Route::prefix('/')->middleware(CrudBlock::class)->group(function(){
     
     Route::get('/', function(){
         if(Auth::check())return redirect()->back();
