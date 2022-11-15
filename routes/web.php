@@ -1,17 +1,17 @@
 <?php
 
-use App\Models\Escolaridade;
 use App\Http\Middleware\CrudBlock;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\QuemSouController;
 use App\Http\Controllers\AtividadeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\EscolaridadeController;
-use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Auth;
     //return view('welcome');
     //return view('main/index');
 //});
+
 
 Route::prefix('/login')->controller(LoginController::class)->group(function (){
     Route::get('/','index')->name('login.index');
