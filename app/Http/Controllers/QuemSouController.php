@@ -14,8 +14,8 @@ class QuemSouController extends Controller
     }
     public function store(Request $request)
     {
-        $titulo = $this->titulo->addTitulo($request);
-        return redirect()->route('quemsou.index')->with('mensagem.sucesso',"Título '{$titulo}' Adicionado");
+        $QuemSou = QuemSou::create($request->all());
+        return redirect()->route('quemsou.index')->with('mensagem.sucesso',"Título '{$QuemSou->titulo}' Adicionado");
     }
 
     public function destroy(QuemSou $titulo)
