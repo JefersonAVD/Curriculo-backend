@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 
 class QuemSouController extends Controller
 {
-    public function index()
+    public function index(QuemSou $info)
     {
-        $info = QuemSou::all();
-        return view('quemsou.index',['info'=>$info])->with(['mensagemSucesso'=>session('mensagem.sucesso'),'pageTitle'=>'Quem Sou']);
+        return view('quemsou.index',['info'=>$info->all()])->with(['mensagemSucesso'=>session('mensagem.sucesso'),'pageTitle'=>'Quem Sou']);
     }
     public function store(Request $request)
     {

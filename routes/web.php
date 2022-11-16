@@ -52,12 +52,13 @@ Route::middleware(CrudBlock::class)->group( function (){
         Route::post('/atualizar/{perfil}','update')->name('perfil.update');
     });
     
-    Route::prefix('/quem-sou')->controller(QuemSouController::class)->group(function(){
+    Route::prefix('/quemsou')->controller(QuemSouController::class)->group(function(){
+        Route::get('/','index')->name('quemsou.index');
         Route::get('/{linha}/textos','textoIndex')->name('texto.index');
         Route::post('/{linha}/salvar','textoStore')->name('texto.store');
         Route::delete('/{linha}/deletar/{id}','textoDestroy')->name('texto.destroy');
-        
-        Route::get('/','index')->name('quemsou.index');
+
+   
         Route::get('/{titulo}','edit')->name('quemsou.edit');
         Route::post('/salvar','store')->name('quemsou.store');
         Route::delete('/delete/{titulo}','destroy')->name('quemsou.destroy');
