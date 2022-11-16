@@ -41,7 +41,7 @@ class QuemSouController extends Controller
 
     public function textoStore(Request $request)
     {
-        Textos::create($request->except('_token'))->belong()->attach($request->linha);
+        QuemSou::find($request->linha)->texto()->create($request->all());
         return redirect()->route('texto.index',['linha'=>$request->linha])->with('mensagem.sucesso',"Conteúdo Adicionado");
     }
 
