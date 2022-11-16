@@ -15,13 +15,14 @@ class ExperienciaController extends Controller
     {
         return view('experiencias.edit',['experiencia'=>$experiencia])->with('pageTitle',"Editar '$experiencia->vaga'");
     }
-    public function store(Experiencia $experiencia, Request $request) 
-    {
-        $experiencia->create($request->all());
+    public function store(Request $request) 
+    {   
+        $experiencia = Experiencia::create($request->all());
         return view('experiencias.index')->with('mensagem.sucesso',"Experiência '$experiencia->vaga' adicionada");
     }
-    public function update(Experiencia $experiencia, Request $request)
+    public function update(Request $request)
     {
+        $experiencia = Experiencia::find($request->experiencia);
         $troca = Experiencia::where('ordem',$request->ordem)->first();
         if(!isset($troca) && $request->ordem < $experiencia->ordem){
             $experiencia->update($request->all()); 
