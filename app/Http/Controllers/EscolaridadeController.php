@@ -15,9 +15,9 @@ class EscolaridadeController extends Controller
     {
         return view('escolaridade.edit',['escola'=>$escola])->with('pageTitle',"Editar '$escola->curso'");
     }
-    public function store(Escolaridade $escolaridade, Request $request)
-    {
-        $escolaridade->create($request->except('_token'));
+    public function store(Request $request)
+    {   
+        $escolaridade = Escolaridade::create($request->all());
         return redirect()->route('escolaridade.index')->with('mensagem.sucesso',"Escolaridade '$escolaridade->curso' criada");
     }
     public function destroy(Escolaridade $escola)
