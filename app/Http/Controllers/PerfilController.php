@@ -17,7 +17,7 @@ class PerfilController extends Controller
 
     public function store(Request $request){
         Validator::make($request->all(),
-            ['tipo'=>['min:8','max:20'],'conteudo'=>['min:8','max:200']],
+            ['tipo'=>['min:2','max:20'],'conteudo'=>['min:8','max:200']],
             ['min'=>'No mínimo :min caracteres','max'=>'No máximo :max caracteres']
         )->validate();
         $inputs = $request->input();    
