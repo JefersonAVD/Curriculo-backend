@@ -35,7 +35,7 @@ class PerfilController extends Controller
         Perfil::findOrFail($perfil)->delete();
         return redirect()->route('perfil.index')->with('mensagem.sucesso','Conteúdo Removido com Sucesso');
     }
-    public function update(Perfil $perfil, PerfilFormRequest $request)
+    public function update(Perfil $perfil, Request $request)
     {
         $perfil->update($request->all());
         $request->session()->flash('mensagem.sucesso','Conteúdo Atualizado com Sucesso');
