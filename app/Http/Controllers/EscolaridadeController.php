@@ -17,7 +17,7 @@ class EscolaridadeController extends Controller
     }
     public function store(Escolaridade $escolaridade, Request $request)
     {
-        $escolaridade->create($request->all());
+        $escolaridade->create($request->except('_token'));
         return redirect()->route('escolaridade.index')->with('mensagem.sucesso',"Escolaridade '$escolaridade->curso' criada");
     }
     public function destroy(Escolaridade $escola)
