@@ -9,7 +9,7 @@ class ExperienciaController extends Controller
 {
     public function index(Experiencia $experiencia)
     {
-        return view('experiencias.index',['experiencias'=>$experiencia->all()])->with(['mensagemSucesso'=>session('mensagem.sucesso'),'pageTitle'=>'Experiências']);
+        return view('experiencias.index',['experiencias'=>$experiencia->all()])->with(['mensagemSucesso' => session('mensagem.sucesso'),'pageTitle'=>'Experiências']);
     }
     public function edit(Experiencia $experiencia)
     {
@@ -18,7 +18,7 @@ class ExperienciaController extends Controller
     public function store(Request $request) 
     {   
         $experiencia = Experiencia::create($request->all());
-        return view('experiencias.index')->with('mensagem.sucesso',"Experiência '$experiencia->vaga' adicionada");
+        return redirect()->route('experiencias.index')->with('mensagem.sucesso',"Experiência '$experiencia->vaga' adicionada");
     }
     public function update(Request $request)
     {
