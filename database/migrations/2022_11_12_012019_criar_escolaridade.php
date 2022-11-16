@@ -15,7 +15,7 @@ class CriarEscolaridade extends Migration
     {
         Schema::create('escolaridade', function (Blueprint $table) {
             $table->id();
-            $table->string('curso',30);
+            $table->string('curso',100);
             $table->integer('anoFormacao');
             $table->string('instituicao',30);
             $table->string('descricao',255);
